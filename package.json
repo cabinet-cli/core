@@ -2,9 +2,10 @@
   "name": "@cabinet-cli/core",
   "version": "0.0.1",
   "description": "core implementation library for cabinet cli",
-  "main": "index.js",
   "repository": "https://github.com/cabinet-cli/core",
   "author": "Sophia <beyondthesophia@gmail.com>",
+  "typings": "dist/index.d.ts",
+  "module": "dist/index.js",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.12.10",

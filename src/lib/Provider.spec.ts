@@ -1,10 +1,14 @@
-import Provider from "@root/Provider";
+import { Provider } from "@root/Provider";
 
 describe("Provider", () => {
     it("initializes with name properly", () => {
         class ExampleProvider extends Provider {
             constructor() {
                 super("example");
+            }
+
+            run() {
+                return Promise.resolve([]);
             }
         }
 
@@ -16,6 +20,10 @@ describe("Provider", () => {
         class ExampleProvider extends Provider {
             constructor() {
                 super("");
+            }
+
+            run() {
+                return Promise.resolve([]);
             }
         }
 
