@@ -1,6 +1,6 @@
 {
   "name": "@cabinet-cli/core",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "core implementation library for cabinet cli",
   "repository": "https://github.com/cabinet-cli/core",
   "author": "Sophia <beyondthesophia@gmail.com>",
@@ -21,10 +21,12 @@
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.2",
+    "semantic-release": "^17.3.0"
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "semantic-release": "semantic-release"
   }
 }
