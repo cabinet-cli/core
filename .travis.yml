@@ -8,8 +8,8 @@ before_install:
     - npm install -g codecov
 
 script:
-    - yarn build
     - yarn run test --ci && codecov
+    - yarn build
 
 jobs:
     include:
