@@ -7,6 +7,6 @@ export default {
     coverageProvider: "v8",
     moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: "<rootDir>/" }),
     testEnvironment: "node",
-    testPathIgnorePatterns: ["\\\\node_modules\\\\", "\\\\lib\\\\", "\\\\dist\\\\"],
+    testPathIgnorePatterns: ["\\\\node_modules\\\\", "\\\\dist\\\\"],
     verbose: true,
 };
