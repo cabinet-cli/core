@@ -7,10 +7,16 @@ describe("Provider", () => {
     it("executes registered plugins", async () => {
         class ExamplePlugin extends Plugin {
             public static calledCount = 0;
+            public static beforeCalledCount = 0;
 
             public async onAfterCrawl(node: Node): Promise<Node> {
                 ExamplePlugin.calledCount++;
                 return node;
+            }
+
+            public async onBeforeCrawl(): Promise<Partial<Node>> {
+                ExamplePlugin.beforeCalledCount++;
+                return {};
             }
         }
 
@@ -28,5 +34,6 @@ describe("Provider", () => {
         await provider.doRun({});
 
         expect(ExamplePlugin.calledCount).toEqual(2);
+        expect(ExamplePlugin.beforeCalledCount).toEqual(2);
     });
 });

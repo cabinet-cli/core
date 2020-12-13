@@ -10,7 +10,14 @@ export class Provider<TRule extends RuleBase = RuleBase> {
         const crawledNode = await this.crawler.run(rule);
         for (let i = 0; i < crawledNode.length; i++) {
             for (const plugin of this.plugins) {
-                crawledNode[i] = await plugin.onAfterCrawl(crawledNode[i]);
+                const baseNode: Partial<Node> = {
+                    ...(await plugin.onBeforeCrawl(crawledNode[i])),
+                };
+
+                crawledNode[i] = {
+                    ...baseNode,
+                    ...(await plugin.onAfterCrawl(crawledNode[i])),
+                };
             }
         }
 
