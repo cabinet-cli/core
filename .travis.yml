@@ -19,7 +19,6 @@ script:
 jobs:
     include:
         - stage: dev
-          if: branch = "dev"
           node_js: lts/*
           deploy:
               provider: script
@@ -29,7 +28,6 @@ jobs:
           on:
               branch: dev
         - stage: production
-          if: branch = "master"
           node_js: lts/*
           deploy:
               provider: script
