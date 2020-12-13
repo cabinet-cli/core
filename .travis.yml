@@ -21,4 +21,5 @@ jobs:
           deploy:
               provider: script
               skip_cleanup: true
+              before_script: yarn build
               script: npx semantic-release
