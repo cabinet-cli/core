@@ -3,7 +3,7 @@
         "master",
         {
             "name": "dev",
-            "prerelease": "prerelease",
+            "prerelease": "beta",
             "channel": "next"
         }
     ],
