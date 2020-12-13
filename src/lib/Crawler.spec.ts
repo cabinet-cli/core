@@ -29,6 +29,6 @@ describe("Crawler", () => {
 
         expect(() => {
             new ExampleCrawler();
-        }).toThrow("Given provider name '' is not valid");
+        }).toThrow("Given crawler name '' is not valid");
     });
 });

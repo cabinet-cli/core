@@ -7,7 +7,7 @@ export abstract class Crawler<TRule extends RuleBase = RuleBase> {
 
     protected constructor(public readonly name: string) {
         if (!this.name) {
-            throw new Error(`Given provider name '${this.name}' is not valid`);
+            throw new Error(`Given crawler name '${this.name}' is not valid`);
         }
     }
 
