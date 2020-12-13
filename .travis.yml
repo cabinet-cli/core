@@ -2,6 +2,11 @@ language: node_js
 node_js:
     - node
 
+branches:
+    only:
+        - dev
+        - master
+
 cache: yarn
 
 before_install:
@@ -13,13 +18,23 @@ script:
 
 jobs:
     include:
-        # Define the release stage that runs semantic-release
-        - stage: release
+        - stage: dev
+          if: branch = "dev"
           node_js: lts/*
-          # Advanced: optionally overwrite your default `script` step to skip the tests
-          # script: skip
           deploy:
               provider: script
               skip_cleanup: true
               before_script: yarn build
               script: npx semantic-release
+          on:
+              branch: dev
+        - stage: production
+          if: branch = "master"
+          node_js: lts/*
+          deploy:
+              provider: script
+              skip_cleanup: true
+              before_script: yarn build
+              script: npx semantic-release
+          on:
+              branch: master
