@@ -9,4 +9,5 @@ export default {
     testEnvironment: "node",
     testPathIgnorePatterns: ["\\\\node_modules\\\\", "\\\\dist\\\\"],
     verbose: true,
+    setupFiles: ["./setupJest.ts"],
 };
