@@ -1,6 +1,6 @@
 import fetchMock from "jest-fetch-mock";
 
-import { Fetcher } from "@root/Fetcher";
+import { Fetcher } from "./Fetcher";
 
 const FETCH_MOCK_DATA = '{ "data": "test" }';
 

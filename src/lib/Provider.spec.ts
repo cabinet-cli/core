@@ -1,7 +1,7 @@
-import { Provider } from "@root/Provider";
-import { Crawler } from "@root/Crawler";
-import { Plugin } from "@root/Plugin";
-import { Node } from "@root/types";
+import { Provider } from "./Provider";
+import { Crawler } from "./Crawler";
+import { Plugin } from "./Plugin";
+import { Node } from "./types";
 
 describe("Provider", () => {
     it("executes registered plugins", async () => {

@@ -1,4 +1,4 @@
-import { Node } from "@root/types";
+import { Node } from "./types";
 
 export abstract class Plugin {
     public abstract onAfterCrawl(node: Node): Promise<Node>;

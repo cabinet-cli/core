@@ -1,6 +1,6 @@
-import { Fetcher } from "@root/Fetcher";
+import { Fetcher } from "./Fetcher";
 
-import { Node, RuleBase } from "@root/types";
+import { Node, RuleBase } from "./types";
 
 export abstract class Crawler<TRule extends RuleBase = RuleBase> {
     protected readonly fetcher: Fetcher = new Fetcher();

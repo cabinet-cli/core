@@ -1,7 +1,7 @@
-import { Plugin } from "@root/Plugin";
-import { Crawler } from "@root/Crawler";
+import { Plugin } from "./Plugin";
+import { Crawler } from "./Crawler";
 
-import { Node, RuleBase } from "@root/types";
+import { Node, RuleBase } from "./types";
 
 export class Provider<TRule extends RuleBase = RuleBase> {
     public constructor(public readonly crawler: Crawler<TRule>, protected readonly plugins: Plugin[] = []) {}

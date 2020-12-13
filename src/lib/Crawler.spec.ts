@@ -1,4 +1,4 @@
-import { Crawler } from "@root/Crawler";
+import { Crawler } from "./Crawler";
 
 describe("Crawler", () => {
     it("initializes with name properly", () => {
