@@ -34,5 +34,6 @@
         "build": "tsc",
         "test": "jest --coverage",
         "semantic-release": "semantic-release"
-    }
+    },
+    "files": ["dist"]
 }
