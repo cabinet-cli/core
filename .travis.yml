@@ -19,20 +19,22 @@ script:
 jobs:
     include:
         - stage: dev
+          if: branch = "dev"
           node_js: lts/*
           deploy:
               provider: script
               skip_cleanup: true
               before_script: yarn build
               script: npx semantic-release
-          on:
-              branch: dev
+              on:
+                  branch: dev
         - stage: production
+          if: branch = "master"
           node_js: lts/*
           deploy:
               provider: script
               skip_cleanup: true
               before_script: yarn build
               script: npx semantic-release
-          on:
-              branch: master
+              on:
+                  branch: master
