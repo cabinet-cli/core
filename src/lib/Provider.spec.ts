@@ -2,6 +2,7 @@ import { Provider } from "./Provider";
 import { Crawler } from "./Crawler";
 import { Plugin } from "./Plugin";
 import { Node } from "./types";
+import * as yup from "yup";
 
 describe("Provider", () => {
     it("executes registered plugins", async () => {
@@ -25,13 +26,17 @@ describe("Provider", () => {
                 super("example");
             }
 
+            getRuleScheme() {
+                return yup.object().shape({}).required();
+            }
+
             public async run(): Promise<Node[]> {
                 return [{ title: "", content: "" }];
             }
         }
 
         const provider = new Provider(new ExampleCrawler(), [new ExamplePlugin(), new ExamplePlugin()]);
-        await provider.doRun({});
+        await provider.doRun({ type: "example" });
 
         expect(ExamplePlugin.calledCount).toEqual(2);
         expect(ExamplePlugin.beforeCalledCount).toEqual(2);

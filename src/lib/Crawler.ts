@@ -1,3 +1,5 @@
+import * as yup from "yup";
+
 import { Fetcher } from "./Fetcher";
 
 import { Node, RuleBase } from "./types";
@@ -11,5 +13,6 @@ export abstract class Crawler<TRule extends RuleBase = RuleBase> {
         }
     }
 
+    public abstract getRuleScheme(): yup.ObjectSchemaDefinition<Omit<TRule, "type">>;
     public abstract run(rule: TRule): Promise<Node[]>;
 }

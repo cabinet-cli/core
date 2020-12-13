@@ -1,10 +1,22 @@
+import { ObjectSchemaDefinition, number } from "yup";
+
 import { Crawler } from "./Crawler";
+import { RuleBase, Node } from "./types";
+import { Provider } from "./Provider";
+
+interface ExampleRule extends RuleBase {
+    example: number;
+}
 
 describe("Crawler", () => {
     it("initializes with name properly", () => {
         class ExampleCrawler extends Crawler {
             constructor() {
                 super("example");
+            }
+
+            getRuleScheme(): ObjectSchemaDefinition<Omit<RuleBase, "type">> {
+                return {};
             }
 
             run() {
@@ -22,6 +34,10 @@ describe("Crawler", () => {
                 super("");
             }
 
+            getRuleScheme(): ObjectSchemaDefinition<Omit<RuleBase, "type">> {
+                return {};
+            }
+
             run() {
                 return Promise.resolve([]);
             }
@@ -30,5 +46,30 @@ describe("Crawler", () => {
         expect(() => {
             new ExampleCrawler();
         }).toThrow("Given crawler name '' is not valid");
+    });
+
+    it("applies custom rule validation schema", async () => {
+        class CustomRuleCrawler extends Crawler<ExampleRule> {
+            constructor() {
+                super("custom-rule");
+            }
+
+            public getRuleScheme(): ObjectSchemaDefinition<Omit<ExampleRule, "type">> {
+                return {
+                    example: number().required(),
+                };
+            }
+
+            public async run(): Promise<Node[]> {
+                return [];
+            }
+        }
+
+        await expect(
+            new Provider<ExampleRule>(new CustomRuleCrawler()).doRun({
+                type: "custom-rule",
+                example: ("123" as any) as number,
+            }),
+        ).rejects.toThrow();
     });
 });
