@@ -1,8 +1,8 @@
-import { Provider } from "@root/Provider";
+import { Crawler } from "@root/Crawler";
 
-describe("Provider", () => {
+describe("Crawler", () => {
     it("initializes with name properly", () => {
-        class ExampleProvider extends Provider {
+        class ExampleCrawler extends Crawler {
             constructor() {
                 super("example");
             }
@@ -12,12 +12,12 @@ describe("Provider", () => {
             }
         }
 
-        const provider = new ExampleProvider();
+        const provider = new ExampleCrawler();
         expect(provider.name).toEqual("example");
     });
 
     it("throws an error when invalid name provided", () => {
-        class ExampleProvider extends Provider {
+        class ExampleCrawler extends Crawler {
             constructor() {
                 super("");
             }
@@ -28,7 +28,7 @@ describe("Provider", () => {
         }
 
         expect(() => {
-            new ExampleProvider();
+            new ExampleCrawler();
         }).toThrow("Given provider name '' is not valid");
     });
 });
