@@ -25,7 +25,7 @@ jobs:
               provider: script
               skip_cleanup: true
               before_script: yarn build
-              script: ls -a && npx semantic-release
+              script: npx semantic-release
               on:
                   branch: dev
         - stage: production
